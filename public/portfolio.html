@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Personal portfolio showcasing projects, experience, and technical skills." />
+  <meta name="theme-color" content="#1a1a1a" media="(prefers-color-scheme: dark)" />
+  <meta name="theme-color" content="#fafafa" media="(prefers-color-scheme: light)" />
+  <title>Portfolio &mdash; Developer &amp; Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            background: 'var(--background)',
+            foreground: 'var(--foreground)',
+            card: 'var(--card)',
+            'card-foreground': 'var(--card-foreground)',
+            primary: 'var(--primary)',
+            'primary-foreground': 'var(--primary-foreground)',
+            secondary: 'var(--secondary)',
+            'secondary-foreground': 'var(--secondary-foreground)',
+            muted: 'var(--muted)',
+            'muted-foreground': 'var(--muted-foreground)',
+            accent: 'var(--accent)',
+            'accent-foreground': 'var(--accent-foreground)',
+            border: 'var(--border)',
+            input: 'var(--input)',
+            ring: 'var(--ring)',
+          },
+          borderRadius: {
+            lg: '0.5rem',
+            md: '0.375rem',
+            sm: '0.25rem',
+          },
+        },
+      },
+    }
+  </script>
+  <style>
+    :root {
+      --background: #fafafa;
+      --foreground: #171717;
+      --card: #f5f5f5;
+      --card-foreground: #171717;
+      --primary: #171717;
+      --primary-foreground: #fafafa;
+      --secondary: #e5e5e5;
+      --secondary-foreground: #262626;
+      --muted: #e5e5e5;
+      --muted-foreground: #737373;
+      --accent: #0d9488;
+      --accent-foreground: #fafafa;
+      --border: #e5e5e5;
+      --input: #e5e5e5;
+      --ring: #0d9488;
+    }
+    .dark {
+      --background: #1a1a1a;
+      --foreground: #ededed;
+      --card: #262626;
+      --card-foreground: #ededed;
+      --primary: #ededed;
+      --primary-foreground: #1a1a1a;
+      --secondary: #333333;
+      --secondary-foreground: #ededed;
+      --muted: #333333;
+      --muted-foreground: #8a8a8a;
+      --accent: #2dd4bf;
+      --accent-foreground: #1a1a1a;
+      --border: #333333;
+      --input: #333333;
+      --ring: #2dd4bf;
+    }
+    html { scroll-behavior: smooth; }
+    * { border-color: var(--border); }
+  </style>
+</head>
+<body class="bg-background text-foreground font-sans antialiased">
+
+  <!-- ============================================================ -->
+  <!-- HEADER                                                       -->
+  <!-- ============================================================ -->
+  <header class="sticky top-0 z-50 w-full border-b border-border/50 bg-background/80 backdrop-blur-md">
+    <nav class="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
+      <a href="#" class="text-sm font-semibold tracking-tight text-foreground">portfolio.</a>
+
+      <!-- Desktop nav -->
+      <div class="hidden items-center gap-8 md:flex">
+        <a href="#about" class="text-sm text-muted-foreground transition-colors hover:text-foreground">About</a>
+        <a href="#projects" class="text-sm text-muted-foreground transition-colors hover:text-foreground">Projects</a>
+        <a href="#experience" class="text-sm text-muted-foreground transition-colors hover:text-foreground">Experience</a>
+        <a href="#contact" class="text-sm text-muted-foreground transition-colors hover:text-foreground">Contact</a>
+        <button id="theme-toggle-desktop" aria-label="Toggle theme" class="inline-flex h-9 w-9 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground">
+          <!-- Sun icon (shown in dark mode) -->
+          <svg class="hidden dark:block h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+          <!-- Moon icon (shown in light mode) -->
+          <svg class="block dark:hidden h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+        </button>
+      </div>
+
+      <!-- Mobile controls -->
+      <div class="flex items-center gap-2 md:hidden">
+        <button id="theme-toggle-mobile" aria-label="Toggle theme" class="inline-flex h-9 w-9 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground">
+          <svg class="hidden dark:block h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+          <svg class="block dark:hidden h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+        </button>
+        <button id="mobile-menu-toggle" aria-label="Toggle navigation menu" class="inline-flex h-9 w-9 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground">
+          <!-- Hamburger icon -->
+          <svg id="menu-icon-open" class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+          <!-- Close icon -->
+          <svg id="menu-icon-close" class="hidden h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="hidden border-t border-border/50 bg-background px-6 pb-6 md:hidden">
+      <div class="flex flex-col gap-4 pt-4">
+        <a href="#about" class="mobile-nav-link text-sm text-muted-foreground transition-colors hover:text-foreground">About</a>
+        <a href="#projects" class="mobile-nav-link text-sm text-muted-foreground transition-colors hover:text-foreground">Projects</a>
+        <a href="#experience" class="mobile-nav-link text-sm text-muted-foreground transition-colors hover:text-foreground">Experience</a>
+        <a href="#contact" class="mobile-nav-link text-sm text-muted-foreground transition-colors hover:text-foreground">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ============================================================ -->
+    <!-- HERO                                                         -->
+    <!-- ============================================================ -->
+    <section id="about" class="mx-auto flex max-w-5xl flex-col justify-center px-6 pb-24 pt-32 md:pb-32 md:pt-44">
+      <div class="flex flex-col-reverse items-center gap-10 md:flex-row md:items-start md:justify-between md:gap-16">
+        <!-- Text content -->
+        <div class="flex-1">
+          <p class="mb-4 text-sm font-medium tracking-widest text-accent uppercase">Software Engineer</p>
+          <h1 class="max-w-3xl text-4xl font-bold leading-tight tracking-tight text-foreground md:text-5xl lg:text-6xl" style="text-wrap: balance;">
+            Hi, I'm [Name]. I build technical solutions, clean software, and engaging digital experiences.
+          </h1>
+          <p class="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground md:text-lg" style="text-wrap: pretty;">
+            Full-stack engineer focused on building performant, accessible web applications with modern technologies and thoughtful design.
+          </p>
+          <div class="mt-10 flex items-center gap-5">
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="text-muted-foreground transition-colors hover:text-accent" aria-label="GitHub profile">
+              <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+            </a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="text-muted-foreground transition-colors hover:text-accent" aria-label="LinkedIn profile">
+              <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+            </a>
+            <a href="mailto:hello@example.com" class="text-muted-foreground transition-colors hover:text-accent" aria-label="Send email">
+              <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Photo placeholder -->
+        <div class="relative flex-shrink-0">
+          <div class="flex h-48 w-48 items-center justify-center overflow-hidden rounded-full border-2 border-border bg-secondary md:h-56 md:w-56 lg:h-64 lg:w-64">
+            <!-- Replace this SVG with your image:
+                 <img src="your-photo.jpg" alt="Your name" class="h-full w-full object-cover" />
+            -->
+            <svg class="h-20 w-20 text-muted-foreground md:h-24 md:w-24 lg:h-28 lg:w-28" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 0 0-16 0"/></svg>
+          </div>
+          <!-- Decorative accent ring -->
+          <div class="absolute -inset-2 -z-10 rounded-full border border-accent/20"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- PROJECTS                                                     -->
+    <!-- ============================================================ -->
+    <section id="projects" class="mx-auto max-w-5xl px-6 py-24 md:py-32">
+      <h2 class="mb-2 text-sm font-medium tracking-widest text-accent uppercase">Projects</h2>
+      <p class="mb-12 text-2xl font-semibold tracking-tight text-foreground md:text-3xl">Featured work</p>
+
+      <div class="grid gap-6 md:grid-cols-2">
+
+        <!-- Project 1 -->
+        <article class="group flex flex-col rounded-lg border border-border bg-card p-6 transition-colors hover:border-accent/40">
+          <h3 class="text-lg font-semibold text-foreground">Cloud Dashboard</h3>
+          <p class="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">A real-time monitoring dashboard for cloud infrastructure with interactive charts and alerting.</p>
+          <div class="mt-4 flex flex-wrap gap-2">
+            <span class="inline-flex items-center rounded-md bg-secondary px-2.5 py-0.5 text-xs font-normal text-muted-foreground">React</span>
+            <span class="inline-flex items-center rounded-md bg-secondary px-2.5 py-0.5 text-xs font-normal text-muted-foreground">TypeScript</span>
+            <span class="inline-flex items-center rounded-md bg-secondary px-2.5 py-0.5 text-xs font-normal text-muted-foreground">D3.js</span>
+            <span class="inline-flex items-center rounded-md bg-secondary px-2.5 py-0.5 text-xs font-normal text-muted-foreground">Node.js</span>
+          </div>
+          <div class="mt-5 flex items-center gap-4 border-t border-border pt-4">
+            <a href="https://example.com" target="_blank" rel="noopener noreferrer" class="flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-accent">
+              <svg class="h-3.5 w-3.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
+              Live Demo
+            </a>
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-accent">
+              <svg class="h-3.5 w-3.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+              Source
+            </a>
+          </div>
+        </article>
+
+        <!-- Project 2 -->
+        <article class="group flex flex-col rounded-lg border border-border bg-card p-6 transition-colors hover:border-accent/40">
+          <h3 class="text-lg font-semibold text-foreground">TaskFlow</h3>
+          <p class="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">A collaborative project management tool with drag-and-drop boards, real-time sync, and team workspaces.</p>
+          <div class="mt-4 flex flex-wrap gap-2">
+            <span class="inline-flex items-center rounded-md bg-secondary px-2.5 py-0.5 text-xs font-normal text-muted-foreground">Next.js</span>
+            <span class="inline-flex items-center rounded-md bg-secondary px-2.5 py-0.5 text-xs font-normal text-muted-foreground">Prisma</span>
+            <span class="inline-flex items-center rounded-md bg-secondary px-2.5 py-0.5 text-xs font-normal text-muted-foreground">PostgreSQL</span>
+            <span class="inline-flex items-center rounded-md bg-secondary px-2.5 py-0.5 text-xs font-normal text-muted-foreground">Tailwind CSS</span>
+          </div>
+          <div class="mt-5 flex items-center gap-4 border-t border-border pt-4">
+            <a href="https://example.com" target="_blank" rel="noopener noreferrer" class="flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-accent">
+              <svg class="h-3.5 w-3.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
+              Live Demo
+            </a>
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-accent">
+              <svg class="h-3.5 w-3.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+              Source
+            </a>
+          </div>
+        </article>
+
+        <!-- Project 3 -->
+        <article class="group flex flex-col rounded-lg border border-border bg-card p-6 transition-colors hover:border-accent/40">
+          <h3 class="text-lg font-semibold text-foreground">SecureVault</h3>
+          <p class="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">End-to-end encrypted password manager with zero-knowledge architecture and cross-device sync.</p>
+          <div class="mt-4 flex flex-wrap gap-2">
+            <span class="inline-flex items-center rounded-md bg-secondary px-2.5 py-0.5 text-xs font-normal text-muted-foreground">Go</span>
+            <span class="inline-flex items-center rounded-md bg-secondary px-2.5 py-0.5 text-xs font-normal text-muted-foreground">React</span>
+            <span class="inline-flex items-center rounded-md bg-secondary px-2.5 py-0.5 text-xs font-normal text-muted-foreground">WebCrypto</span>
+            <span class="inline-flex items-center rounded-md bg-secondary px-2.5 py-0.5 text-xs font-normal text-muted-foreground">SQLite</span>
+          </div>
+          <div class="mt-5 flex items-center gap-4 border-t border-border pt-4">
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-accent">
+              <svg class="h-3.5 w-3.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+              Source
+            </a>
+          </div>
+        </article>
+
+        <!-- Project 4 -->
+        <article class="group flex flex-col rounded-lg border border-border bg-card p-6 transition-colors hover:border-accent/40">
+          <h3 class="text-lg font-semibold text-foreground">DevBlog Engine</h3>
+          <p class="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">A blazing-fast static blog engine built for developers with MDX support and full-text search.</p>
+          <div class="mt-4 flex flex-wrap gap-2">
+            <span class="inline-flex items-center rounded-md bg-secondary px-2.5 py-0.5 text-xs font-normal text-muted-foreground">Astro</span>
+            <span class="inline-flex items-center rounded-md bg-secondary px-2.5 py-0.5 text-xs font-normal text-muted-foreground">MDX</span>
+            <span class="inline-flex items-center rounded-md bg-secondary px-2.5 py-0.5 text-xs font-normal text-muted-foreground">Fuse.js</span>
+            <span class="inline-flex items-center rounded-md bg-secondary px-2.5 py-0.5 text-xs font-normal text-muted-foreground">Vercel</span>
+          </div>
+          <div class="mt-5 flex items-center gap-4 border-t border-border pt-4">
+            <a href="https://example.com" target="_blank" rel="noopener noreferrer" class="flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-accent">
+              <svg class="h-3.5 w-3.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
+              Live Demo
+            </a>
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-accent">
+              <svg class="h-3.5 w-3.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+              Source
+            </a>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- EXPERIENCE                                                   -->
+    <!-- ============================================================ -->
+    <section id="experience" class="mx-auto max-w-5xl px-6 py-24 md:py-32">
+      <h2 class="mb-2 text-sm font-medium tracking-widest text-accent uppercase">Experience</h2>
+      <p class="mb-12 text-2xl font-semibold tracking-tight text-foreground md:text-3xl">Where I've worked</p>
+
+      <!-- Timeline -->
+      <div class="relative space-y-0">
+
+        <!-- Experience 1 -->
+        <div class="group relative grid gap-4 pb-12 md:grid-cols-[180px_1fr] md:gap-8">
+          <div class="absolute left-[7px] top-[22px] hidden h-full w-px bg-border md:left-[187px] md:block"></div>
+          <p class="pt-0.5 text-sm text-muted-foreground md:text-right">2023 &mdash; Present</p>
+          <div class="relative">
+            <div class="absolute -left-[23px] top-[7px] hidden h-2.5 w-2.5 rounded-full border-2 border-accent bg-background md:block"></div>
+            <h3 class="text-base font-semibold text-foreground">Senior Software Engineer <span class="text-accent">&middot; Acme Corp</span></h3>
+            <p class="mt-2 text-sm leading-relaxed text-muted-foreground">Lead frontend architecture for the core product platform. Drove migration to Next.js and improved performance metrics by 40%. Mentor junior engineers and define technical standards.</p>
+            <div class="mt-3 flex flex-wrap gap-2">
+              <span class="inline-flex items-center rounded-md bg-secondary px-2.5 py-0.5 text-xs font-normal text-muted-foreground">React</span>
+              <span class="inline-flex items-center rounded-md bg-secondary px-2.5 py-0.5 text-xs font-normal text-muted-foreground">Next.js</span>
+              <span class="inline-flex items-center rounded-md bg-secondary px-2.5 py-0.5 text-xs font-normal text-muted-foreground">TypeScript</span>
+              <span class="inline-flex items-center rounded-md bg-secondary px-2.5 py-0.5 text-xs font-normal text-muted-foreground">AWS</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Experience 2 -->
+        <div class="group relative grid gap-4 pb-12 md:grid-cols-[180px_1fr] md:gap-8">
+          <div class="absolute left-[7px] top-[22px] hidden h-full w-px bg-border md:left-[187px] md:block"></div>
+          <p class="pt-0.5 text-sm text-muted-foreground md:text-right">2021 &mdash; 2023</p>
+          <div class="relative">
+            <div class="absolute -left-[23px] top-[7px] hidden h-2.5 w-2.5 rounded-full border-2 border-accent bg-background md:block"></div>
+            <h3 class="text-base font-semibold text-foreground">Software Engineer <span class="text-accent">&middot; StartupCo</span></h3>
+            <p class="mt-2 text-sm leading-relaxed text-muted-foreground">Built and maintained full-stack features for a SaaS platform serving 50k+ users. Designed RESTful APIs and implemented real-time collaboration features.</p>
+            <div class="mt-3 flex flex-wrap gap-2">
+              <span class="inline-flex items-center rounded-md bg-secondary px-2.5 py-0.5 text-xs font-normal text-muted-foreground">Node.js</span>
+              <span class="inline-flex items-center rounded-md bg-secondary px-2.5 py-0.5 text-xs font-normal text-muted-foreground">React</span>
+              <span class="inline-flex items-center rounded-md bg-secondary px-2.5 py-0.5 text-xs font-normal text-muted-foreground">PostgreSQL</span>
+              <span class="inline-flex items-center rounded-md bg-secondary px-2.5 py-0.5 text-xs font-normal text-muted-foreground">Redis</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Experience 3 -->
+        <div class="group relative grid gap-4 pb-12 md:grid-cols-[180px_1fr] md:gap-8">
+          <div class="absolute left-[7px] top-[22px] hidden h-full w-px bg-border md:left-[187px] md:block"></div>
+          <p class="pt-0.5 text-sm text-muted-foreground md:text-right">2019 &mdash; 2021</p>
+          <div class="relative">
+            <div class="absolute -left-[23px] top-[7px] hidden h-2.5 w-2.5 rounded-full border-2 border-accent bg-background md:block"></div>
+            <h3 class="text-base font-semibold text-foreground">Frontend Developer <span class="text-accent">&middot; Digital Agency</span></h3>
+            <p class="mt-2 text-sm leading-relaxed text-muted-foreground">Developed responsive web applications for enterprise clients. Created component libraries and design systems used across multiple projects.</p>
+            <div class="mt-3 flex flex-wrap gap-2">
+              <span class="inline-flex items-center rounded-md bg-secondary px-2.5 py-0.5 text-xs font-normal text-muted-foreground">JavaScript</span>
+              <span class="inline-flex items-center rounded-md bg-secondary px-2.5 py-0.5 text-xs font-normal text-muted-foreground">Vue.js</span>
+              <span class="inline-flex items-center rounded-md bg-secondary px-2.5 py-0.5 text-xs font-normal text-muted-foreground">Sass</span>
+              <span class="inline-flex items-center rounded-md bg-secondary px-2.5 py-0.5 text-xs font-normal text-muted-foreground">Webpack</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Experience 4 -->
+        <div class="group relative grid gap-4 pb-12 md:grid-cols-[180px_1fr] md:gap-8">
+          <p class="pt-0.5 text-sm text-muted-foreground md:text-right">2017 &mdash; 2019</p>
+          <div class="relative">
+            <div class="absolute -left-[23px] top-[7px] hidden h-2.5 w-2.5 rounded-full border-2 border-accent bg-background md:block"></div>
+            <h3 class="text-base font-semibold text-foreground">Junior Developer <span class="text-accent">&middot; TechStart</span></h3>
+            <p class="mt-2 text-sm leading-relaxed text-muted-foreground">Contributed to open-source projects and built internal tooling. Wrote automated tests and CI/CD pipelines for the engineering team.</p>
+            <div class="mt-3 flex flex-wrap gap-2">
+              <span class="inline-flex items-center rounded-md bg-secondary px-2.5 py-0.5 text-xs font-normal text-muted-foreground">Python</span>
+              <span class="inline-flex items-center rounded-md bg-secondary px-2.5 py-0.5 text-xs font-normal text-muted-foreground">Django</span>
+              <span class="inline-flex items-center rounded-md bg-secondary px-2.5 py-0.5 text-xs font-normal text-muted-foreground">Docker</span>
+              <span class="inline-flex items-center rounded-md bg-secondary px-2.5 py-0.5 text-xs font-normal text-muted-foreground">Git</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Skills grid -->
+      <div class="mt-16 border-t border-border pt-12">
+        <h3 class="mb-8 text-lg font-semibold text-foreground">Skills &amp; Technologies</h3>
+        <div class="grid gap-8 sm:grid-cols-2 md:grid-cols-4">
+          <div>
+            <p class="mb-3 text-sm font-medium text-foreground">Languages</p>
+            <ul class="flex flex-col gap-1.5">
+              <li class="text-sm text-muted-foreground">TypeScript</li>
+              <li class="text-sm text-muted-foreground">JavaScript</li>
+              <li class="text-sm text-muted-foreground">Python</li>
+              <li class="text-sm text-muted-foreground">Go</li>
+              <li class="text-sm text-muted-foreground">SQL</li>
+            </ul>
+          </div>
+          <div>
+            <p class="mb-3 text-sm font-medium text-foreground">Frontend</p>
+            <ul class="flex flex-col gap-1.5">
+              <li class="text-sm text-muted-foreground">React</li>
+              <li class="text-sm text-muted-foreground">Next.js</li>
+              <li class="text-sm text-muted-foreground">Vue.js</li>
+              <li class="text-sm text-muted-foreground">Tailwind CSS</li>
+              <li class="text-sm text-muted-foreground">HTML/CSS</li>
+            </ul>
+          </div>
+          <div>
+            <p class="mb-3 text-sm font-medium text-foreground">Backend</p>
+            <ul class="flex flex-col gap-1.5">
+              <li class="text-sm text-muted-foreground">Node.js</li>
+              <li class="text-sm text-muted-foreground">Express</li>
+              <li class="text-sm text-muted-foreground">Django</li>
+              <li class="text-sm text-muted-foreground">PostgreSQL</li>
+              <li class="text-sm text-muted-foreground">Redis</li>
+            </ul>
+          </div>
+          <div>
+            <p class="mb-3 text-sm font-medium text-foreground">DevOps &amp; Tools</p>
+            <ul class="flex flex-col gap-1.5">
+              <li class="text-sm text-muted-foreground">AWS</li>
+              <li class="text-sm text-muted-foreground">Docker</li>
+              <li class="text-sm text-muted-foreground">Git</li>
+              <li class="text-sm text-muted-foreground">CI/CD</li>
+              <li class="text-sm text-muted-foreground">Vercel</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- CONTACT                                                      -->
+    <!-- ============================================================ -->
+    <section id="contact" class="mx-auto max-w-5xl px-6 py-24 md:py-32">
+      <h2 class="mb-2 text-sm font-medium tracking-widest text-accent uppercase">Contact</h2>
+      <p class="mb-8 text-2xl font-semibold tracking-tight text-foreground md:text-3xl">Let's connect</p>
+      <p class="mb-10 max-w-lg text-base leading-relaxed text-muted-foreground">I'm always open to new opportunities, interesting projects, and conversations about technology. Feel free to reach out.</p>
+
+      <div class="flex flex-col gap-4 sm:flex-row sm:gap-6">
+        <a href="mailto:hello@example.com" class="group flex items-center gap-2 text-sm text-foreground transition-colors hover:text-accent">
+          <svg class="h-4 w-4 text-muted-foreground group-hover:text-accent" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          hello@example.com
+          <svg class="h-3.5 w-3.5 text-muted-foreground opacity-0 transition-opacity group-hover:opacity-100" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+        </a>
+        <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="group flex items-center gap-2 text-sm text-foreground transition-colors hover:text-accent">
+          <svg class="h-4 w-4 text-muted-foreground group-hover:text-accent" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+          GitHub
+          <svg class="h-3.5 w-3.5 text-muted-foreground opacity-0 transition-opacity group-hover:opacity-100" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+        </a>
+        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="group flex items-center gap-2 text-sm text-foreground transition-colors hover:text-accent">
+          <svg class="h-4 w-4 text-muted-foreground group-hover:text-accent" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+          LinkedIn
+          <svg class="h-3.5 w-3.5 text-muted-foreground opacity-0 transition-opacity group-hover:opacity-100" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================================ -->
+  <!-- FOOTER                                                       -->
+  <!-- ============================================================ -->
+  <footer class="border-t border-border">
+    <div class="mx-auto flex max-w-5xl items-center justify-between px-6 py-8">
+      <p class="text-xs text-muted-foreground">&copy; 2026 [Name]. All rights reserved.</p>
+      <p class="text-xs text-muted-foreground">Built with HTML &amp; Tailwind CSS</p>
+    </div>
+  </footer>
+
+  <!-- ============================================================ -->
+  <!-- SCRIPTS                                                      -->
+  <!-- ============================================================ -->
+  <script>
+    // Theme toggle
+    function toggleTheme() {
+      document.documentElement.classList.toggle('dark');
+      const isDark = document.documentElement.classList.contains('dark');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    }
+
+    // Restore saved theme
+    (function () {
+      const saved = localStorage.getItem('theme');
+      if (saved === 'light') {
+        document.documentElement.classList.remove('dark');
+      } else if (saved === 'dark') {
+        document.documentElement.classList.add('dark');
+      } else if (window.matchMedia('(prefers-color-scheme: light)').matches) {
+        document.documentElement.classList.remove('dark');
+      }
+    })();
+
+    document.getElementById('theme-toggle-desktop').addEventListener('click', toggleTheme);
+    document.getElementById('theme-toggle-mobile').addEventListener('click', toggleTheme);
+
+    // Mobile menu toggle
+    const menuToggle = document.getElementById('mobile-menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const iconOpen = document.getElementById('menu-icon-open');
+    const iconClose = document.getElementById('menu-icon-close');
+
+    menuToggle.addEventListener('click', function () {
+      const isHidden = mobileMenu.classList.contains('hidden');
+      mobileMenu.classList.toggle('hidden');
+      iconOpen.classList.toggle('hidden');
+      iconClose.classList.toggle('hidden');
+    });
+
+    // Close mobile menu on link click
+    document.querySelectorAll('.mobile-nav-link').forEach(function (link) {
+      link.addEventListener('click', function () {
+        mobileMenu.classList.add('hidden');
+        iconOpen.classList.remove('hidden');
+        iconClose.classList.add('hidden');
+      });
+    });
+  </script>
+
+</body>
+</html>
